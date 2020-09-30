@@ -6,7 +6,22 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+
+            {% for node in items %}
+                <li>
+                    <p>{{ node.name }}</p>
+                    {% if node.hasChild %}
+                        <ul>
+                        {% include "inc/tree.html.twig" with {'current': current-1} %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+
+
+
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
