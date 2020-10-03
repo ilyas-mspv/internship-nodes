@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TreeController extends AbstractController
 {
     private $treeRepository;
+    private $treeArray;
 
     public function __construct(SamsungRepository $samsungRepository)
     {
@@ -52,18 +53,23 @@ class TreeController extends AbstractController
         $samsungDevices = $this->treeRepository->selectNodes();
         $items = array();
 
-        foreach ($samsungDevices as $node) {
-            $items[] = array(
-                "id" => $node['id'],
-                "parent_id" => $node["parent_id"],
-                "name" => $node["name"],
-                "hasChild" => $node["hasChild"]
-            );
+        foreach ($samsungDevices as $k => &$v) {
+            $items[$v["id"]] = &$v;
         }
-        return new JsonResponse($items, Response::HTTP_OK);
-//        return $this->render('base.html.twig', ['items'=>$items, 'current' => 0]);
-    }
 
+        foreach($samsungDevices as $k => &$v){
+            if($v['parent_id'] && isset($items[$v['parent_id']])){
+                $items[$v['parent_id']]['nodes'][] = &$v;
+            }
+        }
+
+//        foreach($samsungDevices as $k => &$v){
+//            if($v['parent_id'] && isset($items[$v['parent_id']])){
+//                unset($samsungDevices[$k]);
+//            }
+//        }
+        return new JsonResponse($items, Response::HTTP_OK);
+    }
 
 
 

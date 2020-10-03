@@ -39,7 +39,8 @@ class SamsungRepository extends ServiceEntityRepository
     public function selectNodes(): array {
         $conn = $this->manager->getConnection();
         try {
-            $stmt = $conn->prepare("SELECT itm.*, (SELECT COUNT(*) FROM `samsung` WHERE samsung.parent_id = itm.id) as hasChild FROM `samsung` as itm");
+//            $stmt = $conn->prepare("SELECT itm.*, (SELECT COUNT(*) FROM `samsung` WHERE samsung.parent_id = itm.id) as hasChild FROM `samsung` as itm");
+            $stmt = $conn->prepare("SELECT itm.* FROM `samsung` as itm");
             $stmt->execute();
             return $stmt->fetchAllAssociative();
         } catch (\Doctrine\DBAL\Driver\Exception $e) {
