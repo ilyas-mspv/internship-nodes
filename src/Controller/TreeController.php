@@ -3,12 +3,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Employee;
 use App\Entity\Samsung;
 use App\Repository\SamsungRepository;
+use App\Service\SamsungService;
+use Doctrine\DBAL\ConnectionException;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +22,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TreeController extends AbstractController
 {
     private $treeRepository;
-    private $treeArray;
 
     public function __construct(SamsungRepository $samsungRepository)
     {
@@ -26,131 +31,128 @@ class TreeController extends AbstractController
 
     /**
      * @Route("/", name="nodes")
+     * @param SamsungService $service
+     * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(SamsungService $service): Response
     {
-
-        $samsungDevices = $this->treeRepository->findAll();
-        $data = [];
-
-        foreach ($samsungDevices as $node) {
-            $data[] = [
-                'id' => $node->getId(),
-                'parent_id' => $node->getParentId(),
-                'name' => $node->getName(),
-                'created_at' => $node->getCreatedAt()
-            ];
-        }
-        return new JsonResponse($data, Response::HTTP_OK);
+        return new Response($service->showAll());
     }
+
 
     /**
      * @Route("/tree", name="nodes_tree")
+     * @param SamsungService $service
+     * @return JsonResponse
      */
-    public function treeView()
+    public function treeView(SamsungService $service)
     {
-
-        $samsungDevices = $this->treeRepository->selectNodes();
-        $items = array();
-
-        foreach ($samsungDevices as $k => &$v) {
-            $items[$v["id"]] = &$v;
-        }
-
-        foreach($samsungDevices as $k => &$v){
-            if($v['parent_id'] && isset($items[$v['parent_id']])){
-                $items[$v['parent_id']]['nodes'][] = &$v;
-            }
-        }
-
-//        foreach($samsungDevices as $k => &$v){
-//            if($v['parent_id'] && isset($items[$v['parent_id']])){
-//                unset($samsungDevices[$k]);
-//            }
-//        }
-        return new JsonResponse($items, Response::HTTP_OK);
+        return new JsonResponse($service->showTree(), Response::HTTP_OK);
     }
 
 
+    /**
+     * @Route("/testRelation", name="nodes")
+     * @return Response
+     */
+    public function testRelation(){
+
+        $node = $this->treeRepository->find(7);
+        $employees = $node->getEmployees();
+
+
+        return new Response(var_dump($employees));
+    }
 
     /**
      * @Route ("/new", methods={"POST"})
      * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param SamsungService $service
      * @return Response
+     * @throws ConnectionException
+     * @throws Exception
      */
-
-    public function newDevice(Request $request)
+    public function newNode(Request $request,EntityManagerInterface $entityManager, SamsungService $service)
     {
 
-        $entityManager = $this->getDoctrine()->getManager();
+        // TODO почитать про транзакции в  entity manager
 
-        $samsungDevice = new Samsung();
-        $samsungDevice->setName("Galaxy Series");
-        $samsungDevice->setParentId(3);
+        $entityManager->getConnection()->beginTransaction();
+        try{
+            $samsungDevice = $service->newNode(
+                $request->request->get("name"),
+                $request->request->get("parent_id")
+            );
 
-        $entityManager->persist($samsungDevice);
-        $entityManager->flush();
-
-        return new Response("Device id=" . $samsungDevice->getId());
+            $entityManager->persist($samsungDevice);
+            $entityManager->flush();
+            $entityManager->getConnection()->commit();
+            return new JsonResponse(['ok'=>true, 'id' => $samsungDevice->getId()]);
+        } catch (ConnectionException $e) {
+            $entityManager->getConnection()->rollBack();
+            throw $e;
+        } catch (\Exception $e){
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
      * @Route("/{id<\d+>}", name="get_node",methods={"GET"})
-     * @param $id
+     * @param SamsungService $service
+     * @param int $id
+     * @return Response
+     */
+    public function getNode(SamsungService $service, int $id): Response
+    {
+        $node = $service->getNodeSerialized($id);
+        return new Response($node,Response::HTTP_OK,['Content-Type'=>'application/json']);
+    }
+
+    /**
+     * @Route("/{id<\d+>}", name="update_node", methods={"PUT"})
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param SamsungService $service
+     * @param int $id
      * @return JsonResponse
      * @throws Exception
      */
-
-    public function getNode(int $id): JsonResponse
+    public function updateNode(Request $request,EntityManagerInterface $entityManager,SamsungService $service,int $id): JsonResponse
     {
-        $node = $this->treeRepository->findOneBy(['id' => $id]);
+        try{
+            $parent_id = $request->get("parent_id");
+            $name = $request->get("name");
 
-        if (!$node)
-            return new JsonResponse(['ok' => false], Response::HTTP_NOT_FOUND);
+            $node = $service->updateNode($id,$parent_id,$name);
 
-        return new JsonResponse([
-            'id' => $node->getId(),
-            'parent_id' => $node->getParentId(),
-            'name' => $node->getName(),
-            'created_at' => $node->getCreatedAt()
-        ], Response::HTTP_OK);
+            $entityManager->persist($node);
+            $entityManager->flush($node);
+
+            return new JsonResponse(['ok' => true], Response::HTTP_OK);
+        }catch (Exception $e){
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
-     * @Route("/{id}", name="update_node", methods={"PUT"})
-     * @param $id
-     * @param Request $request
+     * @Route("/{id<\d+>}", name="delete_customer", methods={"DELETE"})
+     * @param EntityManagerInterface $entityManager
+     * @param SamsungService $service
+     * @param int $id
      * @return JsonResponse
+     * @throws Exception
      */
-    public function updateNode($id, Request $request): JsonResponse
+    public function deleteNode(EntityManagerInterface $entityManager,SamsungService $service, int $id): JsonResponse
     {
-        $node = $this->treeRepository->findOneBy(['id' => $id]);
-
-        if (!$node)
-            return new JsonResponse(['ok' => false], Response::HTTP_NOT_FOUND);
-
-        $data = json_decode($request->getContent(), true);
-
-        empty($data['parent_id']) ? true : $node->setParentId($data['parent_id']);
-        empty($data['name']) ? true : $node->setName($data['name']);
-
-        $this->treeRepository->updateNode($node);
-
-        return new JsonResponse(['ok' => true], Response::HTTP_OK);
-    }
-
-    /**
-     * @Route("/{id}", name="delete_customer", methods={"DELETE"})
-     * @param $id
-     * @return JsonResponse
-     */
-    public function delete($id): JsonResponse
-    {
-        $customer = $this->treeRepository->find($id);
-
-        $this->treeRepository->removeNode($customer);
-
-        return new JsonResponse(['status' => 'Node deleted'], Response::HTTP_NO_CONTENT);
+        try{
+            $node = $service->getNode($id);
+            $entityManager->remove($node);
+            $entityManager->flush();
+            return new JsonResponse(['status' => 'Node deleted'], Response::HTTP_OK);
+        }catch (\Exception $e){
+            throw new Exception($e->getMessage());
+        }
     }
 
 

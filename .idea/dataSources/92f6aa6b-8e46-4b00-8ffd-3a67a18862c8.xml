@@ -1054,46 +1054,42 @@
     <table id="336" parent="7" name="doctrine_migration_versions">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="337" parent="7" name="samsung">
+    <table id="337" parent="7" name="employee">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="338" parent="336" name="version">
+    <table id="338" parent="7" name="samsung">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="339" parent="7" name="work">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="340" parent="336" name="version">
       <Position>1</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="339" parent="336" name="executed_at">
+    <column id="341" parent="336" name="executed_at">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="340" parent="336" name="execution_time">
+    <column id="342" parent="336" name="execution_time">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="341" parent="336" name="PRIMARY">
+    <key id="343" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="342" parent="337" name="id">
+    <column id="344" parent="337" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="343" parent="337" name="parent_id">
+    <column id="345" parent="337" name="name">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="344" parent="337" name="name">
-      <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="345" parent="337" name="created_at">
-      <Position>4</Position>
-      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="346" parent="337" name="PRIMARY">
@@ -1101,5 +1097,67 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="347" parent="338" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="348" parent="338" name="parent_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="349" parent="338" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="350" parent="338" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="351" parent="338" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="352" parent="339" name="samsung_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="353" parent="339" name="employee_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="354" parent="339" name="IDX_534E6880619E3A10">
+      <ColNames>samsung_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="355" parent="339" name="IDX_534E68808C03F15C">
+      <ColNames>employee_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="356" parent="339" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>samsung_id
+employee_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="357" parent="339" name="FK_534E6880619E3A10">
+      <ColNames>samsung_id</ColNames>
+      <RefTableName>samsung</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="358" parent="339" name="FK_534E68808C03F15C">
+      <ColNames>employee_id</ColNames>
+      <RefTableName>employee</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
   </database-model>
 </dataSource>

@@ -11,36 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24eacdaa-adf5-4765-804b-1bb730f57f44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/," afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_9_29_20__5_04_PM.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/92f6aa6b-8e46-4b00-8ffd-3a67a18862c8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/92f6aa6b-8e46-4b00-8ffd-3a67a18862c8/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/devices.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/dev/jms_serializer.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/jms_serializer.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/jms_serializer.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20200929175744.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20200929180619.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/TreeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Samsung.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/inc/tree.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201009203233.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201010165707.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/EmployeeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Employee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/EmployeeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/SamsungService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/employee/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92f6aa6b-8e46-4b00-8ffd-3a67a18862c8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/92f6aa6b-8e46-4b00-8ffd-3a67a18862c8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TreeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TreeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Samsung.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Samsung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,11 +148,15 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1iBk9rxL2LLezfc5PW0cWByAT2K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -178,7 +164,14 @@
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Entity" />
+      <recent name="$PROJECT_DIR$/src/Repository" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -196,6 +189,10 @@
       <updated>1601388223222</updated>
       <workItem from="1601388224326" duration="14641000" />
       <workItem from="1601416928573" duration="11951000" />
+      <workItem from="1601721689368" duration="3922000" />
+      <workItem from="1602067263767" duration="454000" />
+      <workItem from="1602255282594" duration="6869000" />
+      <workItem from="1602341748948" duration="18705000" />
     </task>
     <servers />
   </component>
@@ -213,6 +210,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="674" y="469" width="443" height="254" key="#Composer" timestamp="1601388251542">
@@ -235,21 +235,41 @@
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
     <state x="627" y="392" width="538" height="408" key="#com.intellij.fileTypes.FileTypeChooser/68.27.1660.1125@68.27.1660.1125" timestamp="1601397250728" />
+    <state x="689" y="241" width="444" height="650" key="#com.intellij.ide.util.MemberChooser" timestamp="1602351240941">
+      <screen x="68" y="27" width="1660" height="1125" />
+    </state>
+    <state x="689" y="241" width="444" height="650" key="#com.intellij.ide.util.MemberChooser/68.27.1660.1125@68.27.1660.1125" timestamp="1602351240941" />
+    <state x="634" y="343" width="524" height="496" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602397989181">
+      <screen x="68" y="27" width="1660" height="1125" />
+    </state>
+    <state x="634" y="343" width="524" height="496" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1602397989181" />
     <state x="633" y="504" width="525" height="183" key="ComposerInitDialogKey" timestamp="1601403454096">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
     <state x="633" y="504" width="525" height="183" key="ComposerInitDialogKey/68.27.1660.1125@68.27.1660.1125" timestamp="1601403454096" />
-    <state x="682" y="357" width="424" height="496" key="FileChooserDialogImpl" timestamp="1601428656941">
+    <state x="682" y="352" width="454" height="496" key="FileChooserDialogImpl" timestamp="1601721715745">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
-    <state x="682" y="357" width="424" height="496" key="FileChooserDialogImpl/68.27.1660.1125@68.27.1660.1125" timestamp="1601428656941" />
-    <state x="599" y="309" width="593" height="573" key="NewPhpClassDialog" timestamp="1601388278286">
+    <state x="682" y="352" width="454" height="496" key="FileChooserDialogImpl/68.27.1660.1125@68.27.1660.1125" timestamp="1601721715745" />
+    <state x="762" y="490" width="272" height="212" key="Github.ShareDialog" timestamp="1601721738373">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
-    <state x="599" y="309" width="593" height="573" key="NewPhpClassDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1601388278286" />
-    <state x="561" y="273" width="672" height="678" key="search.everywhere.popup" timestamp="1601402866386">
+    <state x="762" y="490" width="272" height="212" key="Github.ShareDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1601721738373" />
+    <state x="599" y="304" width="593" height="573" key="NewPhpClassDialog" timestamp="1602259094950">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
-    <state x="561" y="273" width="672" height="678" key="search.everywhere.popup/68.27.1660.1125@68.27.1660.1125" timestamp="1601402866386" />
+    <state x="599" y="304" width="593" height="573" key="NewPhpClassDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1602259094950" />
+    <state x="680" y="362" width="432" height="467" key="refactoring.ChangeSignatureDialog" timestamp="1602344955966">
+      <screen x="68" y="27" width="1660" height="1125" />
+    </state>
+    <state x="680" y="362" width="432" height="467" key="refactoring.ChangeSignatureDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1602344955966" />
+    <state x="562" y="267" key="run.anything.popup" timestamp="1602395202549">
+      <screen x="68" y="27" width="1660" height="1125" />
+    </state>
+    <state x="562" y="267" key="run.anything.popup/68.27.1660.1125@68.27.1660.1125" timestamp="1602395202549" />
+    <state x="561" y="273" width="672" height="678" key="search.everywhere.popup" timestamp="1601724319006">
+      <screen x="68" y="27" width="1660" height="1125" />
+    </state>
+    <state x="561" y="273" width="672" height="678" key="search.everywhere.popup/68.27.1660.1125@68.27.1660.1125" timestamp="1601724319006" />
   </component>
 </project>

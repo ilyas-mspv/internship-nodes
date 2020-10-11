@@ -30,6 +30,7 @@ class SamsungRepository extends ServiceEntityRepository
         $this->manager->flush();
     }
 
+
     public function removeNode(Samsung $node)
     {
         $this->manager->remove($node);
@@ -39,7 +40,16 @@ class SamsungRepository extends ServiceEntityRepository
     public function selectNodes(): array {
         $conn = $this->manager->getConnection();
         try {
-//            $stmt = $conn->prepare("SELECT itm.*, (SELECT COUNT(*) FROM `samsung` WHERE samsung.parent_id = itm.id) as hasChild FROM `samsung` as itm");
+
+
+            // добавить таблицу работников конкретных подразделений
+            // связь с подразделением многие ко многим
+            // нужно вести учет ставки работника
+
+            // читать про сервисы симфони (контроллер - точка входа в прилодение)
+            // логика в сервис
+            // exceptions
+
             $stmt = $conn->prepare("SELECT itm.* FROM `samsung` as itm");
             $stmt->execute();
             return $stmt->fetchAllAssociative();
