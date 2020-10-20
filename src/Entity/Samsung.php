@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use App\Dto\NodeDto;
 use App\Repository\SamsungRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SamsungRepository::class)
@@ -17,27 +19,30 @@ class Samsung
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"employee"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"employee"})
      */
     private $parent_id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"employee"})
      */
     private $name;
 
     /**
      * @ORM\Column (type="datetime")
+     * @Groups({"employee"})
      */
     private $created_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Employee", inversedBy="samsungs")
-     * @ORM\JoinTable(name="work")
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="node_id")
      */
     private $employees;
 
@@ -106,4 +111,15 @@ class Samsung
     {
         return $this->employees;
     }
+
+
+    public function toDto(){
+        $node = new NodeDto();
+        $node->id = $this->getId();
+        $node->name = $this->getName();
+        $node->parentId = $this->getParentId();
+        $node->createdAt = $this->getCreatedAt();
+        return $node;
+    }
+
 }

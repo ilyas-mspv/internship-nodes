@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use App\Dto\EmployeeDto;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Entity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EmployeeRepository::class)
@@ -16,26 +18,28 @@ class Employee
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"employees","employee"})
      */
     private $id;
 
     /**
      * @ORM\Column (type="string", length=255)
-     *
+     * @Groups ({"employees","employee"})
      */
     private $name;
 
     /**
-     * @ORM\ManyToMany (targetEntity="Samsung",mappedBy="employees")
+     * @ORM\OneToMany (targetEntity="Work",mappedBy="employee_id")
+     * @Groups ({"employee"})
      */
-    private $samsungs;
+    private $nodes;
 
     /**
      * Employee constructor.
      */
     public function __construct()
     {
-        $this->samsungs = new ArrayCollection();
+        $this->nodes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,29 +63,36 @@ class Employee
     /**
      * @return Collection|Samsung[]
      */
-    public function getSamsungs(): Collection
+    public function getNodes(): Collection
     {
-        return $this->samsungs;
+        return $this->nodes;
     }
 
-    public function addSamsung(Samsung $samsung): self
+    public function addNode(Samsung $samsung): self
     {
-        if (!$this->samsungs->contains($samsung)) {
-            $this->samsungs[] = $samsung;
+        if (!$this->nodes->contains($samsung)) {
+            $this->nodes[] = $samsung;
             $samsung->addEmployee($this);
         }
 
         return $this;
     }
 
-    public function removeSamsung(Samsung $samsung): self
+    public function removeNode(Samsung $samsung): self
     {
-        if ($this->samsungs->contains($samsung)) {
-            $this->samsungs->removeElement($samsung);
+        if ($this->nodes->contains($samsung)) {
+            $this->nodes->removeElement($samsung);
             $samsung->removeEmployee($this);
         }
 
         return $this;
     }
 
+
+    public function toDto(){
+        $dto = new EmployeeDto();
+        $dto->name = $this->getName();
+        $dto->id = $this->getId();
+        return $dto;
+    }
 }
