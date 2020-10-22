@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Work;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Driver\Exception;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -82,5 +83,33 @@ class WorkRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
+
+    public function findNodeByParentId($parent_id){
+
+        $connection = $this->_em->getConnection();
+        try{
+            $stmt = $connection->prepare(" SELECT
+                                            nodes.id as node_id,
+                                            nodes.parent_id as node_parent_id,
+                                            nodes.name as node_name,
+                                            nodes.created_at as node_created_at,
+                                            employee.id as employee_id ,
+                                            employee.name as employee_name,
+                                            work.rate as employee_rate
+                                            FROM `samsung` as nodes
+                                            INNER JOIN work ON nodes.id = work.node_id_id
+                                            INNER JOIN employee ON work.employee_id_id = employee.id
+                                            WHERE parent_id = '".$parent_id."'");
+
+            $stmt->execute();
+            return $stmt->fetchAllAssociative();
+        }catch (Exception $e) {
+            throw new \PDOException("Error while fetching data: ".$e->getMessage());
+        } catch (\Doctrine\DBAL\Exception $e) {
+            throw new \PDOException("Error while fetching data: ".$e->getMessage());
+        }
+
+    }
+
 
 }

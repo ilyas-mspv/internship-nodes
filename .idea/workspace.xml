@@ -10,26 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24eacdaa-adf5-4765-804b-1bb730f57f44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201014221704.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/WorkController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dto/EmployeeDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dto/NodeDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Dto/WorkEmployeeDto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Work.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/WorkRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/EmployeeService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/WorkService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/work/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92f6aa6b-8e46-4b00-8ffd-3a67a18862c8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/92f6aa6b-8e46-4b00-8ffd-3a67a18862c8.xml" afterDir="false" />
+    <list default="true" id="24eacdaa-adf5-4765-804b-1bb730f57f44" name="Default Changelist" comment="Nodes and Employees relations, DTOs, Services">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TreeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TreeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/EmployeeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EmployeeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Samsung.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Samsung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/SamsungService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/NodesService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/WorkRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WorkRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WorkService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WorkService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,8 +186,16 @@
       <workItem from="1602255282594" duration="6869000" />
       <workItem from="1602341748948" duration="18705000" />
       <workItem from="1602761793575" duration="14740000" />
-      <workItem from="1602971079866" duration="34203000" />
+      <workItem from="1602971079866" duration="47487000" />
     </task>
+    <task id="LOCAL-00001" summary="Nodes and Employees relations, DTOs, Services">
+      <created>1603222936381</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603222936382</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +215,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Nodes and Employees relations, DTOs, Services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nodes and Employees relations, DTOs, Services" />
   </component>
   <component name="WindowStateProjectService">
     <state x="674" y="469" width="443" height="254" key="#Composer" timestamp="1601388251542">
@@ -277,6 +271,10 @@
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
     <state x="390" y="225" width="1016" height="742" key="SettingsEditor/68.27.1660.1125@68.27.1660.1125" timestamp="1603142189221" />
+    <state x="496" y="326" width="800" height="540" key="Vcs.Push.Dialog.v2" timestamp="1603222946795">
+      <screen x="68" y="27" width="1660" height="1125" />
+    </state>
+    <state x="496" y="326" width="800" height="540" key="Vcs.Push.Dialog.v2/68.27.1660.1125@68.27.1660.1125" timestamp="1603222946795" />
     <state x="168" y="117" width="1460" height="930" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603143562615">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
