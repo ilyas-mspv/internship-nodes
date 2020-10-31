@@ -52,7 +52,7 @@ class EmployeeService
             $this->entityManager->persist($employee);
             $this->entityManager->flush();
             $this->entityManager->commit();
-            return ["ok" => true];
+            return ["ok" => true]; // send object
         }catch (Exception $e){
             $this->entityManager->rollback();
             throw $e;

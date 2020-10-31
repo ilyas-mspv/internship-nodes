@@ -36,7 +36,7 @@ class WorkService
 
         $works = $this->repository->findWorksByEmployeeId($eid);
         if(empty($works))
-            throw new NotFoundHttpException("Entity not found");
+            return  $this->er->findOneBy(['id'=>$eid])->toDto(); //todo: отдельная dto с пустым массивом
         $employee = $works[0]->getEmployee();
         $dtoArray = ['name' => $employee->getName()];
         foreach ($works as $work) {
@@ -97,17 +97,18 @@ class WorkService
      * @throws ConnectionException|NonUniqueResultException
      */
 
+    //разнести по функциям
     public function changeWork(int $nid, int $eid, float $rate)
     {
         $status = [];
         try {
             $this->entityManager->getConnection()->beginTransaction();
-            $work = $this->repository->findWorkByNodeAndEmployeeIds($nid, $eid);
+            $work = $this->repository->findOneBy(['employee_id'=>$eid,'node_id'=>$nid]);
             if (!empty($work)) {
                 if ($rate == 0) {
                     // delete work
                     $this->entityManager->remove($work);
-                    $status['message'] = "Work deleted.";
+                    $status['message'] = "Work deleted."; //в будущем: функциональные ответы
                 } else if ($rate != $work->getRate()) {
                     //update working rate
                     $rate_current = $this->repository->findRateSum($eid);
@@ -119,7 +120,7 @@ class WorkService
                         throw new \Exception("New rate sum must not exceed 1.00.");
                     }
                 } else {
-                    throw new \Exception("You can't update same working rate.");
+                    throw new \Exception("You can't update same working rate."); //в будущем: отдельный класс исключений
                 }
             } else {
                 //new work

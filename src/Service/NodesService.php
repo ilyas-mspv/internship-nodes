@@ -32,9 +32,6 @@ class NodesService
         $this->nr = $sr;
     }
 
-    //todo: clean up code
-    //      get rid of serializer
-
     /**
      * @param int $id
      * @return Samsung|null
@@ -91,7 +88,7 @@ class NodesService
         $this->entityManager->getConnection()->beginTransaction();
         try{
             $node = $this->getNode($id);
-            if(!empty($parent_id))
+            if(!empty($parent_id) && !empty($name)) //complete
                 $node->setParentId($parent_id);
             else
                 throw new \Exception("Parent Id shouldn't be empty.");
@@ -125,6 +122,7 @@ class NodesService
             $this->entityManager->getConnection()->rollBack();
             throw $e;
         } catch (\Exception $e){
+            $this->entityManager->getConnection()->rollBack();
             throw new Exception($e->getMessage());
         }
     }
