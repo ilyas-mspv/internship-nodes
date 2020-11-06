@@ -118,7 +118,7 @@ class Samsung
         $node->id = $this->getId();
         $node->name = $this->getName();
         $node->parentId = $this->getParentId();
-        $node->createdAt = $this->getCreatedAt();
+        $node->createdAt = $this->getCreatedAt()->format("d.m.Y H:i:s");
         return $node;
     }
 

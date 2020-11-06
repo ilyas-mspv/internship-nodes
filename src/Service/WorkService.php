@@ -3,16 +3,13 @@
 
 namespace App\Service;
 
-use App\Dto\NodeDto;
 use App\Entity\Work;
 use App\Repository\EmployeeRepository;
 use App\Repository\SamsungRepository;
 use App\Repository\WorkRepository;
 use Doctrine\DBAL\ConnectionException;
-use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class WorkService
 {

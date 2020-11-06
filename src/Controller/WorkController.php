@@ -2,21 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Work;
-use App\Repository\EmployeeRepository;
-use App\Repository\SamsungRepository;
-use App\Repository\WorkRepository;
 use App\Service\WorkService;
 use Doctrine\DBAL\ConnectionException;
-use Doctrine\DBAL\Exception;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class WorkController extends AbstractController
 {
@@ -39,6 +32,7 @@ class WorkController extends AbstractController
     }
 
     /**
+     * Все работники определенного подразделения
      * @Route ("/works/node/{nid<\d+>}", name="get_node_employees")
      * @param $nid
      * @return Response
@@ -48,6 +42,7 @@ class WorkController extends AbstractController
     }
 
     /**
+     * Изменение работы (добавление, изменение и удаление работы)
      * @Route("/works", name="change_work",methods={"POST","PUT","DELETE"})
      * @param Request $request
      * @return JsonResponse

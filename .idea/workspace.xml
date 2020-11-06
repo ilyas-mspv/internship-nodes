@@ -10,12 +10,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24eacdaa-adf5-4765-804b-1bb730f57f44" name="Default Changelist" comment="Nodes and Employees relations, DTOs, Services">
+    <list default="true" id="24eacdaa-adf5-4765-804b-1bb730f57f44" name="Default Changelist" comment="fixes">
+      <change afterPath="$PROJECT_DIR$/src/Helper/PDF.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/treeplain.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TreeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TreeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/WorkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/WorkController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dto/EmployeeDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/EmployeeDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Samsung.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Samsung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SamsungRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/EmployeeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/EmployeeService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/NodesService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/NodesService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/WorkService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WorkService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +39,13 @@
     <execution>
       <executable path="composer" />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,7 +66,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
@@ -138,6 +156,16 @@
       <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/vendor/fpdf/fpdf" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iBk9rxL2LLezfc5PW0cWByAT2K" />
@@ -151,6 +179,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
@@ -192,6 +221,9 @@
       <workItem from="1603385304794" duration="556000" />
       <workItem from="1603386229056" duration="1932000" />
       <workItem from="1603783576362" duration="9000" />
+      <workItem from="1604176912240" duration="330000" />
+      <workItem from="1604338550271" duration="599000" />
+      <workItem from="1604670395726" duration="12550000" />
     </task>
     <task id="LOCAL-00001" summary="Nodes and Employees relations, DTOs, Services">
       <created>1603222936381</created>
@@ -200,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603222936382</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixes">
+      <created>1604177049157</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604177049157</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +260,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Nodes and Employees relations, DTOs, Services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nodes and Employees relations, DTOs, Services" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="674" y="469" width="443" height="254" key="#Composer" timestamp="1601388251542">
@@ -268,22 +308,28 @@
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
     <state x="762" y="490" width="272" height="212" key="Github.ShareDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1601721738373" />
-    <state x="599" y="264" width="593" height="573" key="NewPhpClassDialog" timestamp="1603146976257">
-      <screen x="68" y="27" width="1660" height="1125" />
+    <state x="691" y="291" width="593" height="573" key="NewPhpClassDialog" timestamp="1604682306146">
+      <screen x="0" y="0" width="2160" height="1382" />
     </state>
+    <state x="691" y="291" key="NewPhpClassDialog/0.0.2160.1382@0.0.2160.1382" timestamp="1604682306146" />
     <state x="599" y="264" width="593" height="573" key="NewPhpClassDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1603146976257" />
     <state x="390" y="225" width="1016" height="742" key="SettingsEditor" timestamp="1603142189221">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
     <state x="390" y="225" width="1016" height="742" key="SettingsEditor/68.27.1660.1125@68.27.1660.1125" timestamp="1603142189221" />
-    <state x="496" y="326" width="800" height="540" key="Vcs.Push.Dialog.v2" timestamp="1603222946795">
-      <screen x="68" y="27" width="1660" height="1125" />
+    <state x="557" y="394" width="800" height="540" key="Vcs.Push.Dialog.v2" timestamp="1604177226422">
+      <screen x="0" y="24" width="2160" height="1392" />
     </state>
+    <state x="557" y="394" key="Vcs.Push.Dialog.v2/0.24.2160.1392@0.24.2160.1392" timestamp="1604177226421" />
     <state x="496" y="326" width="800" height="540" key="Vcs.Push.Dialog.v2/68.27.1660.1125@68.27.1660.1125" timestamp="1603222946795" />
     <state x="168" y="117" width="1460" height="930" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603143562615">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>
     <state x="168" y="117" width="1460" height="930" key="com.intellij.history.integration.ui.views.FileHistoryDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1603143562615" />
+    <state x="468" y="193" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604681827984">
+      <screen x="0" y="0" width="2160" height="1382" />
+    </state>
+    <state x="468" y="193" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2160.1382@0.0.2160.1382" timestamp="1604681827984" />
     <state x="682" y="505" width="428" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603138200334">
       <screen x="68" y="27" width="1660" height="1125" />
     </state>

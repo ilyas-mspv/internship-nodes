@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -28,13 +29,49 @@ class TreeController extends AbstractController
 
     /**
      * @Route("/tree/plain", name="nodes_plain")
+     */
+    public function all()
+    {
+        return $this->render(
+            'nodes/plain.html.twig',[
+                'nodes'=>$this->service->showAll()
+            ]
+        );
+    }
+
+
+    /**
+     * @Route("/tree/plain/json", name="nodes_plain_json")
      * @return JsonResponse
      */
-    public function all(): JsonResponse
+    public function all_json(): JsonResponse
     {
         return $this->json($this->service->showAll());
     }
 
+    /**
+     * @Route("/tree/plain/pdf", name="nodes_plain_pdf")
+     */
+    public function all_pdf()
+    {
+        return new Response($this->service->showPdf(),Response::HTTP_OK,  [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="table.pdf"',
+        ]);
+    }
+
+
+    /**
+     * @Route("/tree/plain/excel", name="nodes_plain_excel")
+     */
+    public function all_excel()
+    {
+        return new StreamedResponse($this->service->showExcel(),Response::HTTP_OK,  [
+            'Content-Type' => 'application/vnd.ms-excel',
+            'Content-Disposition' => 'attachment; filename="table.xls"',
+            'Cache-Control'=>'max-age=0'
+        ]);
+    }
 
     /**
      * @Route("/tree/all", name="nodes_all")

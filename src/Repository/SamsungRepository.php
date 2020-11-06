@@ -40,13 +40,6 @@ class SamsungRepository extends ServiceEntityRepository
     public function selectNodes(): array {
         $conn = $this->manager->getConnection();
         try {
-
-
-
-            // читать про сервисы симфони (контроллер - точка входа в прилодение)
-            // логика в сервис
-            // exceptions
-
             $stmt = $conn->prepare("SELECT itm.* FROM `samsung` as itm");
             $stmt->execute();
             return $stmt->fetchAllAssociative();

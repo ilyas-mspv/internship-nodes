@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plain View | Nodes</title>
+    {% block stylesheets %}{% endblock %}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+{% block body %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ParentID</th>
+            <th>Name</th>
+            <th>CreatedAt</th>
+        </tr>
+        {% for node in nodes %}
+            <tr>
+                <td>{{ node.id }}</td>
+                <td>{{ node.parentId }}</td>
+                <td>{{ node.name }}</td>
+                <td>{{ node.createdAt }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+ {% endblock %}
+
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

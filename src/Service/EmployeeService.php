@@ -7,7 +7,6 @@ namespace App\Service;
 use App\Dto\EmployeeDto;
 use App\Entity\Employee;
 use App\Repository\EmployeeRepository;
-use App\Repository\SamsungRepository;
 use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -52,7 +51,7 @@ class EmployeeService
             $this->entityManager->persist($employee);
             $this->entityManager->flush();
             $this->entityManager->commit();
-            return ["ok" => true]; // send object
+            return $employee->toDto();
         }catch (Exception $e){
             $this->entityManager->rollback();
             throw $e;

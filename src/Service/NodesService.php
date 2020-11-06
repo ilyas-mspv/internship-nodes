@@ -5,14 +5,16 @@ namespace App\Service;
 
 
 use App\Entity\Samsung;
+use App\Helper\PDF;
 use App\Repository\EmployeeRepository;
 use App\Repository\SamsungRepository;
 use Doctrine\DBAL\ConnectionException;
 use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class NodesService
@@ -62,6 +64,61 @@ class NodesService
         return $data;
     }
 
+    /**
+     * Outputs PDF file with all nodes in table view
+     */
+    public function showPdf() {
+        $pdf = new PDF();
+        $header = array('ID', 'ParentID', 'Name', 'CreatedAt');
+        $samsungDevices = $this->repository->findAll();
+        $data = [];
+        foreach ($samsungDevices as $node) {
+            $data[] = $node->toDto();
+        }
+        $pdf->SetFont('Arial','',14);
+        $pdf->AddPage();
+        $pdf->generateTable($header,$data);
+        return $pdf->Output('D','table.pdf');
+    }
+
+    /**
+     * Outputs Excel table with all nodes
+     */
+    public function showExcel() {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'ParentID');
+        $sheet->setCellValue('C1', 'Name');
+        $sheet->setCellValue('D1', 'CreatedAt');
+        $styles = [
+            'font'=>[
+                'bold'=>true
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ],
+        ];
+        $spreadsheet->getActiveSheet()->getStyle('A1:D1')->applyFromArray($styles);
+
+        $samsungDevices = $this->repository->findAll();
+
+        $columns = ['A','B','C','D'];
+        $row_count = 2;
+        foreach ($samsungDevices as $node) {
+            $sheet->setCellValue($columns[0].$row_count, $node->getId());
+            $sheet->setCellValue($columns[1].$row_count, $node->getParentId());
+            $sheet->setCellValue($columns[2].$row_count, $node->getName());
+            $sheet->setCellValue($columns[3].$row_count, $node->getCreatedAt()->format("d.m.Y H:i:s"));
+            $row_count++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        return function () use ($writer) {$writer->save('php://output');};
+    }
+
+
+
     public function showTree(){
         $samsungDevices = $this->repository->selectNodes();
         $items = array();
@@ -88,20 +145,19 @@ class NodesService
         $this->entityManager->getConnection()->beginTransaction();
         try{
             $node = $this->getNode($id);
-            if(!empty($parent_id) && !empty($name)) //complete
+            var_dump($parent_id);
+            var_dump($name);
+            if(!is_null($parent_id) && !empty($name)){
                 $node->setParentId($parent_id);
-            else
-                throw new \Exception("Parent Id shouldn't be empty.");
-
-            if(!empty($name))
                 $node->setName($name);
-            else
-                throw new \Exception("Name shouldn't be empty.");
+            }else{
+                throw new \Exception("Input values shouldn't be empty.");
+            }
 
             $this->entityManager->persist($node);
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
-            return ['ok' => true];
+            return $node->toDto();
         }catch (Exception $e){
             $this->entityManager->getConnection()->rollBack();
             throw new Exception($e->getMessage());
@@ -117,7 +173,7 @@ class NodesService
             $this->entityManager->persist($samsungDevice);
             $this->entityManager->flush();
             $this->entityManager->getConnection()->commit();
-            return ['ok' => true];
+            return $samsungDevice->toDto();
         } catch (ConnectionException $e) {
             $this->entityManager->getConnection()->rollBack();
             throw $e;
