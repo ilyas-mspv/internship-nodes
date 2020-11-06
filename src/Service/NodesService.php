@@ -64,10 +64,23 @@ class NodesService
         return $data;
     }
 
+    public function show($output){
+        if($output == "pdf"){
+            return $this->showPdf();
+        }else if($output == "excel"){
+            return $this->showExcel();
+        }else if($output == "json"){
+            return $this->showAll();
+        }else if($output == "treeView"){
+            return $this->buildTree();
+        }
+        return [];
+    }
+
     /**
      * Outputs PDF file with all nodes in table view
      */
-    public function showPdf() {
+    private function showPdf() {
         $pdf = new PDF();
         $header = array('ID', 'ParentID', 'Name', 'CreatedAt');
         $samsungDevices = $this->repository->findAll();
@@ -84,7 +97,7 @@ class NodesService
     /**
      * Outputs Excel table with all nodes
      */
-    public function showExcel() {
+    private function showExcel() {
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setCellValue('A1', 'ID');
@@ -118,28 +131,26 @@ class NodesService
     }
 
 
-
-    public function showTree(){
-        $samsungDevices = $this->repository->selectNodes();
-        $items = array();
-
-        foreach ($samsungDevices as $k => &$v) {
-            $items[$v["id"]] = &$v;
+    private function buildTree($parent = 0){
+        $nodes = $this->repository->findBy(['parent_id'=>$parent]);
+        $result = [];
+        foreach ($nodes as $node) {
+            $result[] = [
+                'id' => (int)$node->getId(),
+                'parentId' => (int)$node->getParentId(),
+                'name' => $node->getName(),
+                'createdAt' => $node->getCreatedAt()->format("d.m.Y H:i:s"),
+                'nodes'=>$this->buildTree($node->getId())
+            ];
         }
 
-        foreach($samsungDevices as $k => &$v){
-            if($v['parent_id'] && isset($items[$v['parent_id']])){
-                $items[$v['parent_id']]['nodes'][] = &$v;
-            }
-        }
+        if(empty($nodes))
+            return [];
 
-        foreach($samsungDevices as $k => &$v){
-            if($v['parent_id'] && isset($items[$v['parent_id']])){
-                unset($samsungDevices[$k]);
-            }
-        }
-        return $items;
+        return $result;
     }
+
+
 
     public function updateNode(int $id, $parent_id, $name){
         $this->entityManager->getConnection()->beginTransaction();

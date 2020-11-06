@@ -46,7 +46,7 @@ class TreeController extends AbstractController
      */
     public function all_json(): JsonResponse
     {
-        return $this->json($this->service->showAll());
+        return $this->json($this->service->show("json"));
     }
 
     /**
@@ -54,7 +54,7 @@ class TreeController extends AbstractController
      */
     public function all_pdf()
     {
-        return new Response($this->service->showPdf(),Response::HTTP_OK,  [
+        return new Response($this->service->show("pdf"),Response::HTTP_OK,  [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'attachment; filename="table.pdf"',
         ]);
@@ -66,7 +66,7 @@ class TreeController extends AbstractController
      */
     public function all_excel()
     {
-        return new StreamedResponse($this->service->showExcel(),Response::HTTP_OK,  [
+        return new StreamedResponse($this->service->show("excel"),Response::HTTP_OK,  [
             'Content-Type' => 'application/vnd.ms-excel',
             'Content-Disposition' => 'attachment; filename="table.xls"',
             'Cache-Control'=>'max-age=0'
@@ -80,7 +80,7 @@ class TreeController extends AbstractController
      */
     public function treeView(NodesService $service)
     {
-        return $this->json($service->showTree());
+        return $this->json($service->show("treeView"));
     }
 
 
