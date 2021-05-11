@@ -11,9 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24eacdaa-adf5-4765-804b-1bb730f57f44" name="Default Changelist" comment="excel &amp; pdf view of plain tree, removed unused imports, libs updated">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210510170216.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Controller/EmployeeControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Controller/TreeControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Controller/WorkControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Service/ServiceEmployeeServiceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Service/ServiceNodesServiceTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Service/ServiceWorkServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TreeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TreeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/NodesService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/NodesService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
@@ -152,6 +164,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iBk9rxL2LLezfc5PW0cWByAT2K" />
@@ -167,27 +180,63 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Nodes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/phpunit" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/tests/Service" />
       <recent name="$PROJECT_DIR$/templates/nodes" />
       <recent name="$PROJECT_DIR$/src/Repository" />
       <recent name="$PROJECT_DIR$/src/Entity" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
+  <component name="RunManager" selected="PHPUnit.ServiceWorkServiceTest.testChangeWork">
+    <configuration name="ServiceNodesServiceTest.testRemoveNode" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\ServiceNodesServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Service/ServiceNodesServiceTest.php" method="testRemoveNode" scope="Method" />
       <method v="2" />
     </configuration>
+    <configuration name="ServiceWorkServiceTest.testChangeWork" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\ServiceWorkServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Service/ServiceWorkServiceTest.php" method="testChangeWork" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ServiceWorkServiceTest.testFindSubnodes" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\ServiceWorkServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Service/ServiceWorkServiceTest.php" method="testFindSubnodes" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ServiceWorkServiceTest.testGetEmployeeWorks" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\ServiceWorkServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Service/ServiceWorkServiceTest.php" method="testGetEmployeeWorks" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ServiceWorkServiceTest.testGetNodeEmployees" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\ServiceWorkServiceTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Service/ServiceWorkServiceTest.php" method="testGetNodeEmployees" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml.dist" scope="XML" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.ServiceWorkServiceTest.testChangeWork" />
+        <item itemvalue="PHPUnit.ServiceWorkServiceTest.testFindSubnodes" />
+        <item itemvalue="PHPUnit.ServiceWorkServiceTest.testGetNodeEmployees" />
+        <item itemvalue="PHPUnit.ServiceWorkServiceTest.testGetEmployeeWorks" />
+        <item itemvalue="PHPUnit.ServiceNodesServiceTest.testRemoveNode" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -211,6 +260,7 @@
       <workItem from="1604176912240" duration="330000" />
       <workItem from="1604338550271" duration="599000" />
       <workItem from="1604670395726" duration="16224000" />
+      <workItem from="1620658087328" duration="20755000" />
     </task>
     <task id="LOCAL-00001" summary="Nodes and Employees relations, DTOs, Services">
       <created>1603222936381</created>
@@ -257,90 +307,5 @@
     <MESSAGE value="fixes" />
     <MESSAGE value="excel &amp; pdf view of plain tree, removed unused imports, libs updated" />
     <option name="LAST_COMMIT_MESSAGE" value="excel &amp; pdf view of plain tree, removed unused imports, libs updated" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="674" y="469" width="443" height="254" key="#Composer" timestamp="1601388251542">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="674" y="469" width="443" height="254" key="#Composer/68.27.1660.1125@68.27.1660.1125" timestamp="1601388251542" />
-    <state x="546" y="214" width="700" height="764" key="#PHP" timestamp="1601390743848">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="546" y="214" width="700" height="764" key="#PHP/68.27.1660.1125@68.27.1660.1125" timestamp="1601390743848" />
-    <state x="194" y="443" width="1404" height="306" key="#SQL_Dialects" timestamp="1601428667606">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="194" y="443" width="1404" height="306" key="#SQL_Dialects/68.27.1660.1125@68.27.1660.1125" timestamp="1601428667606" />
-    <state x="496" y="241" width="800" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601428628778">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="496" y="241" width="800" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1601428628778" />
-    <state x="627" y="392" width="538" height="408" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601397250728">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="627" y="392" width="538" height="408" key="#com.intellij.fileTypes.FileTypeChooser/68.27.1660.1125@68.27.1660.1125" timestamp="1601397250728" />
-    <state x="689" y="236" width="444" height="650" key="#com.intellij.ide.util.MemberChooser" timestamp="1602767731096">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="689" y="236" width="444" height="650" key="#com.intellij.ide.util.MemberChooser/68.27.1660.1125@68.27.1660.1125" timestamp="1602767731096" />
-    <state x="532" y="22" width="727" height="1130" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602843944404">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="532" y="22" width="727" height="1130" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1602843944404" />
-    <state x="634" y="288" width="524" height="496" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603212205510">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="634" y="288" width="524" height="496" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1603212205510" />
-    <state x="633" y="504" width="525" height="183" key="ComposerInitDialogKey" timestamp="1601403454096">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="633" y="504" width="525" height="183" key="ComposerInitDialogKey/68.27.1660.1125@68.27.1660.1125" timestamp="1601403454096" />
-    <state x="682" y="347" width="454" height="496" key="FileChooserDialogImpl" timestamp="1602750447829">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="682" y="347" width="454" height="496" key="FileChooserDialogImpl/68.27.1660.1125@68.27.1660.1125" timestamp="1602750447829" />
-    <state x="762" y="490" width="272" height="212" key="Github.ShareDialog" timestamp="1601721738373">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="762" y="490" width="272" height="212" key="Github.ShareDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1601721738373" />
-    <state x="691" y="291" width="593" height="573" key="NewPhpClassDialog" timestamp="1604682306146">
-      <screen x="0" y="0" width="2160" height="1382" />
-    </state>
-    <state x="691" y="291" key="NewPhpClassDialog/0.0.2160.1382@0.0.2160.1382" timestamp="1604682306146" />
-    <state x="599" y="264" width="593" height="573" key="NewPhpClassDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1603146976257" />
-    <state x="390" y="225" width="1016" height="742" key="SettingsEditor" timestamp="1603142189221">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="390" y="225" width="1016" height="742" key="SettingsEditor/68.27.1660.1125@68.27.1660.1125" timestamp="1603142189221" />
-    <state x="557" y="367" width="800" height="540" key="Vcs.Push.Dialog.v2" timestamp="1604689866623">
-      <screen x="0" y="0" width="2160" height="1382" />
-    </state>
-    <state x="557" y="367" key="Vcs.Push.Dialog.v2/0.0.2160.1382@0.0.2160.1382" timestamp="1604689866623" />
-    <state x="557" y="394" key="Vcs.Push.Dialog.v2/0.24.2160.1392@0.24.2160.1392" timestamp="1604177226421" />
-    <state x="496" y="326" width="800" height="540" key="Vcs.Push.Dialog.v2/68.27.1660.1125@68.27.1660.1125" timestamp="1603222946795" />
-    <state x="168" y="117" width="1460" height="930" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603143562615">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="168" y="117" width="1460" height="930" key="com.intellij.history.integration.ui.views.FileHistoryDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1603143562615" />
-    <state x="468" y="193" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604681827984">
-      <screen x="0" y="0" width="2160" height="1382" />
-    </state>
-    <state x="468" y="193" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2160.1382@0.0.2160.1382" timestamp="1604681827984" />
-    <state x="682" y="505" width="428" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603138200334">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="682" y="505" width="428" height="182" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/68.27.1660.1125@68.27.1660.1125" timestamp="1603138200334" />
-    <state x="680" y="362" width="432" height="467" key="refactoring.ChangeSignatureDialog" timestamp="1602344955966">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="680" y="362" width="432" height="467" key="refactoring.ChangeSignatureDialog/68.27.1660.1125@68.27.1660.1125" timestamp="1602344955966" />
-    <state x="562" y="267" key="run.anything.popup" timestamp="1602395202549">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="562" y="267" key="run.anything.popup/68.27.1660.1125@68.27.1660.1125" timestamp="1602395202549" />
-    <state x="561" y="273" width="672" height="678" key="search.everywhere.popup" timestamp="1603031230948">
-      <screen x="68" y="27" width="1660" height="1125" />
-    </state>
-    <state x="561" y="273" width="672" height="678" key="search.everywhere.popup/68.27.1660.1125@68.27.1660.1125" timestamp="1603031230948" />
   </component>
 </project>
